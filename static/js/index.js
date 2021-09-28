@@ -49,7 +49,7 @@ function LED1_Off(){
 	
     client.subscribe("jabravo.fie@unach.edu.ec/test");
     message = new Paho.MQTT.Message("hola desde la web");
-    message.destinationName = "jabravo.fie@unach.edu.ec/test1";
+    message.destinationName = "jabravo.fie@unach.edu.ec/test";
     client.send(message);
 	
   }
@@ -70,8 +70,16 @@ function LED1_Off(){
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
 	  if (message.payloadString=="Sensor 1 Encendido"){
-	  document.getElementById("sensor").innerHTML=message.payloadString;
+	  document.getElementById("sensor1").innerHTML=message.payloadString;
 	  }
-	  document.getElementById("sensor").innerHTML=message.payloadString;
+	  if (message.payloadString=="Sensor 2 Encendido"){
+	  document.getElementById("sensor2").innerHTML=message.payloadString;
+	  }
+	    if (message.payloadString=="Sensor 1 APAGADO"){
+	  document.getElementById("sensor1").innerHTML=message.payloadString;
+	  }
+	  if (message.payloadString=="Sensor 2 APAGADO"){
+	  document.getElementById("sensor2").innerHTML=message.payloadString;
+	  }
   }
   
